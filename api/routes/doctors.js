@@ -9,7 +9,7 @@ const doctorController = require('../controllers/doctors');
 
 
 router.get('/:doctorId',auth_check,doctorController.doctor_profile);
-router.post('/signup',doctorController.register);
+router.post('/register',doctorController.register);
 router.post('/signin', doctorController.login);
 router.get('/',auth_check, doctorController.listAll);
 
