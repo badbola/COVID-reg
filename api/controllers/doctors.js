@@ -4,7 +4,7 @@ const Doctors = require('../models/doctors');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-
+//profile of doctor
 exports.doctor_profile = (req,res,next)=>{
     const id = req.params.doctorId;
     Doctors.findById(id)
@@ -28,7 +28,7 @@ exports.doctor_profile = (req,res,next)=>{
         res.status(500).json({error: err});
     })
 }
-
+//doctor signup
 exports.register = (req,res,next)=>{
     Doctors.find({email: req.body.email}).
     exec().

@@ -4,7 +4,7 @@ const Patient = require('../models/patients');
 const Doctors = require('../models/doctors');
 const { db } = require('../models/patients');
 
-
+//view all patient
 exports.viewAll = (req, res, next) => {
     Patient.find()
         .select("status date id doctor")
@@ -33,9 +33,8 @@ exports.viewAll = (req, res, next) => {
             });
         });
 }
-
+//view patient profile
 exports.profile = (req, res) => {
-    console.log(req.params.id);
     Patient.find({ id: req.params.id })
         .exec()
         .then(patient => {
@@ -58,7 +57,7 @@ exports.profile = (req, res) => {
             });
         });
 }
-
+//register the patient
 exports.addPatient = (req, res, next) => {
 
     Patient.find({ id: req.body.id }).
@@ -113,6 +112,7 @@ exports.addPatient = (req, res, next) => {
         })
 }
 
+//create report in form of an array
 exports.createReport = (req, res, next) => {
     Patient.find({ id: req.params.id }).
         exec().
@@ -144,7 +144,7 @@ exports.createReport = (req, res, next) => {
         })
 }
 
-
+//filter the search
 exports.findby = (req,res,next)=>{
     Patient.find({$or: [{status: req.params.status},{name: req.params.status},{id: req.params.status}]},{date: req.params.status})
         .exec()
