@@ -122,7 +122,7 @@ exports.createReport = (req, res, next) => {
                     .exec()
                     .then(result => {
                         res.status(200).json({
-                            message: "Product updated",
+                            message: "Report updated",
                             request: {
                                 type: "GET",
                                 url: "http://localhost:8000/products/" + patient[0].id

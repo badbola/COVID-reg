@@ -6,12 +6,12 @@ Reports can be seen only after login.
 
 Navigation: 
 
-- /doctors/register → with username and password
-- /doctors/login → returns the JWT to be used
-- /patients/register
-- /patients/:id/create_report
-- /patients/:id/all_reports → List all the reports of a patient oldest to latest
-- /reports/:status → List all the reports of all the patients filtered by a specific
+- /doctors/register → with username and password POST
+- /doctors/signin → returns the JWT to be used POST
+- /patients/register POST
+- /patients/:id/create_report POST
+- /patients/:id/all_reports → List all the reports of a patient oldest to latest GET
+- /reports/:status → List all the reports of all the patients filtered by a specific GET
 status
 
 
