@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Patient = require('../models/patients');
 const Doctors = require('../models/doctors');
 const { db } = require('../models/patients');
-
+const jwt = require('jsonwebtoken');
 //view all patient
 exports.viewAll = (req, res, next) => {
     Patient.find()
@@ -72,7 +72,8 @@ exports.addPatient = (req, res, next) => {
                     }
                 });
             } else {
-                Doctors.findById(req.body.doctorId)
+                const decoded = jwt.verify(req.headers.authorization, "covid");
+                Doctors.findById(decoded.doctorId)
                     .then(doctor => {
                         if (!doctor) {
                             return res.status(404).json({
@@ -85,7 +86,7 @@ exports.addPatient = (req, res, next) => {
                             status: req.body.status,
                             report: req.body.report,
                             date: req.body.date,
-                            doctor: req.body.doctorId
+                            doctor: decoded.doctorId
                         });
                         return patient.save()
                     })

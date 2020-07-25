@@ -2,12 +2,13 @@ const mongoose = require('mongoose');
 //schema for array reports
 const reportSchema = mongoose.Schema({
     day: Number,
+    date: Date,
     status: String
 })
 //schema for patient
 const patientSchema = mongoose.Schema({
     id: {
-        type: String,
+        type: Number,
         required: true,
     },
     name: {
@@ -24,7 +25,7 @@ const patientSchema = mongoose.Schema({
         required: true
     },
     doctor: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         ref: 'Doctors',
         required: true
     },

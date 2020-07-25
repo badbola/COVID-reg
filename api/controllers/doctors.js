@@ -54,6 +54,7 @@ exports.register = (req,res,next)=>{
                         console.log(result);
                         res.status(201).json({
                             message: 'Welcome to the COVID-19 register',
+                            url: 'http://localhost:8000/doctors/signin'
                         });
                     })
                     .catch(err =>{
